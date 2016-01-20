@@ -15,7 +15,7 @@ public class HelloWorldSpringWithAnnotation {
 
 	private static BeanFactory getBeanFactory() throws Exception {
 		// create a bean factory from anno.xml
-		BeanFactory factory = new ClassPathXmlApplicationContext("anno.xml");
+		BeanFactory factory = new ClassPathXmlApplicationContext("file:/Users/caleb/Desktop/sdp/sdp_worksheet_two_dependency_injection/HelloWorldSpringWithAnno/src/annotation/anno.xml");
 		return factory;
 	}
 }
