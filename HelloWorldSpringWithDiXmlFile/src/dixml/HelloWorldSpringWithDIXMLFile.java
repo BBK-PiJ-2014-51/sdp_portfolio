@@ -3,6 +3,7 @@ package dixml;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
 public class HelloWorldSpringWithDIXMLFile {
 
     public static void main(String[] args) throws Exception {
@@ -15,7 +16,7 @@ public class HelloWorldSpringWithDIXMLFile {
 
     private static BeanFactory getBeanFactory() throws Exception {
         // create a bean factory from anno.xml
-        BeanFactory factory = new ClassPathXmlApplicationContext("/Users/caleb/Desktop/dixml.xml");
+        BeanFactory factory = new ClassPathXmlApplicationContext("file:/Users/caleb/Desktop/dixml.xml");
         return factory;
     }
 }
