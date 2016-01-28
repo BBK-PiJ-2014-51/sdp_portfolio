@@ -20,3 +20,12 @@ object StringsEqual extends App{
   println(if(s1.equals(s2)) "Equal" else "not equal")
   
 }
+
+
+object Classes extends App{
+class Hippo(){}
+val h = new Hippo()
+class Lion(){}
+class Tiger(){}
+class Monkey(){}
+}
