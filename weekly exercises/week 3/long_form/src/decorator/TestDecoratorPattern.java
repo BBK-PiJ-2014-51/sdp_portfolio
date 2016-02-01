@@ -6,6 +6,7 @@ public class TestDecoratorPattern {
 	static {
 		dformat = new DecimalFormat("#.##");
 	}
+	
 	public static void main(String[] args) {
 		Pizza pizza = new SimplyVegPizza();
 		pizza = new RomaTomatoes(pizza);
@@ -15,16 +16,18 @@ public class TestDecoratorPattern {
 		pizza = new Spinach(pizza);
 		print(pizza);
 		
-		/*
+		
 		pizza = new SimplyNonVegPizza();
-		print(pizza);
+		//print(pizza);
 		pizza = new Meat(pizza);
-		print(pizza);
+		//print(pizza);
 		pizza = new Cheese(pizza);
-		print(pizza);
+		//print(pizza);
+		pizza = new Cheese(pizza);
+		//print(pizza);
 		pizza = new Ham(pizza);
 		print(pizza);
-		*/
+		
 		
 	}
 	private static void print(Pizza pizza) {

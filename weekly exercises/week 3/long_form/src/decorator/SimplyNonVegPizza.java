@@ -1,9 +1,9 @@
 package decorator;
 
-public class SimplyVegPizza implements Pizza{
+public class SimplyNonVegPizza implements Pizza {
 
-	private String desc = "SimplyVegPizza";
-	private double price = 230;
+	private String desc = "SimplyNonVegPizza";
+	private double price = 350;
 	
 	@Override
 	public String getDesc() {

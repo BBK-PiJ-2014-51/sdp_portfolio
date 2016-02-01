@@ -1,13 +1,15 @@
 package decorator;
 
-public class RomaTomatoes extends PizzaDecorator {
-
-	private String desc = "Roma Tomatoes";
-	private double price = 5.20;
+public class Ham extends PizzaDecorator {
 	
-	public RomaTomatoes(Pizza pizza) {
+	private String desc = "Ham";
+	private double price = 18.12;
+	
+	
+	public Ham(Pizza pizza) {
 		super(pizza);
 	}
+	
 	
 	@Override
 	public String getDesc() {

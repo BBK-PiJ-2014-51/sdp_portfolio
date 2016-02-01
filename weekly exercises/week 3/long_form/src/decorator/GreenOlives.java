@@ -9,5 +9,15 @@ public class GreenOlives extends PizzaDecorator {
 		super(pizza);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public String getDesc() {
+		return pizza.getDesc() + ", " + this.desc + " (" + Double.toString(price)+")";
+	}
 
+	@Override
+	public double getPrice() {
+		return super.getPrice() + this.price;
+	}
+	
 }

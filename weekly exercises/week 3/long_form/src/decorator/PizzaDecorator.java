@@ -2,21 +2,22 @@ package decorator;
 
 public abstract class PizzaDecorator implements Pizza {
 
-	String desc;
-	double price;
+	protected Pizza pizza;
 	
 	public PizzaDecorator(Pizza pizza){
+		
+		this.pizza = pizza;
 
 	}
 	
 	@Override
 	public String getDesc() {
-		return desc;
+		return pizza.getDesc();
 	}
 
 	@Override
 	public double getPrice() {
-		return price;
+		return pizza.getPrice();
 	}
 
 }
