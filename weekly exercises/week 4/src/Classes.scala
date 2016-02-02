@@ -26,6 +26,25 @@ object Classes extends App{
 class Hippo(){}
 val h = new Hippo()
 class Lion(){}
+var l = new Lion()
 class Tiger(){}
+var t = new Tiger()
 class Monkey(){}
+var m = new Monkey()
+class Giraffe(){}
+var g = new Giraffe()
+
+println(h)
+println(l)
+println(t)
+println(m)
+println(g)
+
+var l2 = new Lion()
+var g2 = new Giraffe()
+var g3 = new Giraffe()
+println(l2)
+println(g2)
+println(g3)
+
 }
