@@ -7,27 +7,19 @@ package sml;
  */
 
 public class LinInstruction extends Instruction {
-    private int register;
-    private int value;
-
-    public LinInstruction(String label, String opcode) {
-        super(label, opcode);
-    }
-
-    public LinInstruction(String label, int register, int value) {
-        super(label, "lin");
-        this.register = register;
-        this.value = value;
+	
+	public LinInstruction(String label, int result, int op1, int op2) {
+        super(label, "lin", result, op1, op2);
 
     }
 
     @Override
     public void execute(Machine m) {
-        m.getRegisters().setRegister(register, value);
+        m.getRegisters().setRegister(result, op1);
     }
 
     @Override
     public String toString() {
-        return super.toString() + " register " + register + " value is " + value;
+        return super.toString() + " register " + result + " value is " + op1;
     }
 }
