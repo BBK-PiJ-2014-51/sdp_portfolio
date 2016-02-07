@@ -2,6 +2,8 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ import java.util.Scanner;
  */
 public class Translator {
 
-    private static final String PATH = "/Users/Caleb/Desktop/sdp/sdp_portfolio/cw1_sml/src/";
+    private static final String PATH = "/Users/Caleb/Desktop/sdp/sdp_portfolio/cw-one/src/";
     // word + line is the part of the current line that's not yet processed
     // word has no whitespace
     // If word and line are not empty, line begins with whitespace
@@ -73,28 +75,68 @@ public class Translator {
     // removed. Translate line into an instruction with label label
     // and return the instruction
     public Instruction getInstruction(String label) {
-        int s1; // Possible operands of the instruction
-        int s2;
-        int r;
-        int x;
-
+ 
         if (line.equals(""))
             return null;
 
         String ins = scan();
-        switch (ins) {
-            case "add":
-                r = scanInt();
-                s1 = scanInt();
-                s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
-            case "lin":
-                r = scanInt();
-                s1 = scanInt();
-                return new LinInstruction(label, r, s1);
+        
+        int maxParams = 3;
+        int[] input = new int[maxParams];        
+        for (int i = 0; i < maxParams; i++){
+        	input[i] = scanInt();
         }
+        
+        try {
+			Class<? extends Instruction> insCls = (Class<? extends Instruction>) Class.forName("sml." + Character.toUpperCase(ins.charAt(0)) + ins.substring(1)
+					+ "Instruction");
+			
+			Class[] parameterTypes = new Class[4];
+			parameterTypes[0] = String.class;
+			parameterTypes[1] = int.class;
+			parameterTypes[2] = int.class;
+			parameterTypes[3] = int.class;
 
-        // You will have to write code here for the other instructions.
+			Constructor<? extends Instruction> ctor = insCls.getDeclaredConstructor(parameterTypes);
+			
+			return insCls.cast(ctor.newInstance(label, input[0], input[1], input[2]));
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+//        
+//        switch (ins) {
+//            case "add":
+//                r = scanInt();
+//                s1 = scanInt();
+//                s2 = scanInt();
+//                return new AddInstruction(label, r, s1, s2);
+//            case "lin":
+//                r = scanInt();
+//                s1 = scanInt();
+//                return new LinInstruction(label, r, s1, s2);
+//        }
+
 
         return null;
     }
