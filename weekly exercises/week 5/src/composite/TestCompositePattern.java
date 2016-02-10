@@ -1,3 +1,16 @@
+/**
+ * A
+ * The composite pattern relies on composition to store a collection of objects
+ * that share an interface in common with the containing class.
+ * 
+ * B
+ * You can use a composite pattern to share common logic from the abstract parent
+ * between parent and child containers
+ * 
+ * C
+ * The four participants are the abstract class, the child class, the parent classs, and the collection;
+ */
+
 package composite;
 
 public class TestCompositePattern {

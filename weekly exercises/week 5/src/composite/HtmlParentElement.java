@@ -1,33 +1,49 @@
 package composite;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class HtmlParentElement extends HtmlTag {
 
-	public HtmlParentElement(String string) {
-		// TODO Auto-generated constructor stub
+	private String name;
+	private String startTag;
+	private String endTag;
+	
+	
+	public HtmlParentElement(String name) {
+		this.name = name;
+		children = new ArrayList<HtmlTag>();
 	}
 
 	@Override
 	public String getTagName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setStartTag(String tag) {
-		// TODO Auto-generated method stub
+		startTag = tag;
 
 	}
 
 	@Override
 	public void setEndTag(String tag) {
-		// TODO Auto-generated method stub
+		endTag = tag;
 
 	}
+	
+
 
 	@Override
 	public void generateHtml() {
-		// TODO Auto-generated method stub
-
+		System.out.println(startTag);
+		
+		Iterator<HtmlTag> it = children.iterator();
+		while(it.hasNext()){
+			it.next().generateHtml();
+		}
+		System.out.println(endTag);
+		
 	}
 
 }

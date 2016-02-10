@@ -2,31 +2,36 @@ package composite;
 
 public class HtmlElement extends HtmlTag {
 
-	public HtmlElement(String string) {
-		// TODO Auto-generated constructor stub
+	private String name;
+	private String startTag;
+	private String endTag;
+	
+	
+	public HtmlElement(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String getTagName() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return name;
 	}
 
 	@Override
 	public void setStartTag(String tag) {
-		// TODO Auto-generated method stub
+		startTag = tag;
 
 	}
 
 	@Override
 	public void setEndTag(String tag) {
-		// TODO Auto-generated method stub
+		endTag = tag;
 
 	}
 
 	@Override
 	public void generateHtml() {
-		// TODO Auto-generated method stub
+		System.out.println(startTag  + tagBody + endTag);
 
 	}
 

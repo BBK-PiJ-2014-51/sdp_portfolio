@@ -3,21 +3,27 @@ package composite;
 import java.util.List;
 
 public abstract class HtmlTag {
+	
+	protected String tagBody;
+	
+	protected List<HtmlTag> children;
+	
+	
 	public abstract String getTagName();
 	public abstract void setStartTag(String tag);
 
 	public abstract void setEndTag(String tag);
 	public void setTagBody(String tagBody) {
-		throw new UnsupportedOperationException("Current operation is not support - for this object");
+		this.tagBody = tagBody;
 	}
 	public void addChildTag(HtmlTag htmlTag) {
-		throw new UnsupportedOperationException("Current operation is not support - for this object");
+		children.add(htmlTag);
 	}
 	public void removeChildTag(HtmlTag htmlTag) {
-		throw new UnsupportedOperationException("Current operation is not support - for this object");
+		children.remove(0);
 	}
 	public List<HtmlTag> getChildren() {
-		throw new UnsupportedOperationException("Current operation is not support - for this object");
+		return children;
 	}
 	public abstract void generateHtml();
 }
