@@ -6,11 +6,10 @@ unit testing early in the learning curve.
 For use in a script or App, include:
 import com.atomicscala.AtomicTest._
 */
+
 package com.atomicscala
 
 import java.io.FileWriter
-
-import scala.language.implicitConversions
 
 class AtomicTest[T](val target: T) {
   val errorLog = "_AtomicTestErrors.txt"
