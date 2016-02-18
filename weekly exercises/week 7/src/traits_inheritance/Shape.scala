@@ -3,13 +3,13 @@ package traits_inheritance
 /**
  * @author cclayt02
  */
-trait Shape {
+sealed trait Shape {
   def sides: Int
   def perimeter: Double
   def area: Double
 }
 
-class Circle(val radius: Double) extends Shape{
+case class Circle(val radius: Double) extends Shape{
   def sides: Int = {
     1
   }
@@ -24,7 +24,7 @@ class Circle(val radius: Double) extends Shape{
   
 }
 
-class Rectangle(val sideA: Double, val sideB: Double) extends Shape{
+class Rectangular(val sideA: Double, val sideB: Double) extends Shape{
   def sides: Int = {
     4
   }
@@ -38,11 +38,35 @@ class Rectangle(val sideA: Double, val sideB: Double) extends Shape{
   }
 }
 
-class Square(val side:Double) extends Rectangle(side, side){}
+case class Rectangle(val side1: Double, val side2:Double) extends Rectangular(side1, side2){
+   
+  
+}
 
+case class Square(val side:Double) extends Rectangular(side, side){
+   
+  
+}
+
+object Draw extends App {
+  def apply(shape: Shape) : String = shape match {
+    case shape:Circle => "A circle of radius " + shape.radius + "cm"
+    case shape:Rectangle => "A rectangle of width " + shape.sideA + "cm and height " + shape.sideB + "cm"
+    case shape:Square => "A square of sides " + shape.side + "cm"
+    //case shape:Rectangular => "cm"
+  }
+  
+}
 
 object ShapeTest extends App{
   val shape = new Square(4.4)
   println(shape.area)
     
+}
+
+object DrawTest extends App{
+  val r1 = Draw(Circle(10))
+  println(r1)
+  val r2 = Draw(Rectangle(4,3))
+  println(r2)
 }
