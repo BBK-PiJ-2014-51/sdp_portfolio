@@ -8,8 +8,8 @@ package sml;
 
 public class LinInstruction extends Instruction {
 	
-	public LinInstruction(String label, int result, int op1, int op2) {
-        super(label, "lin", result, op1, op2);
+	public LinInstruction(String label, int result, int op1, int op2, String l2) {
+        super(label, "lin", result, op1, op2, l2);
 
     }
 

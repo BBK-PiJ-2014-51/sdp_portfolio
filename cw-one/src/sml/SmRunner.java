@@ -4,7 +4,7 @@ public class SmRunner {
 
 	public static void main(String[] args) {
         
-		String test = "test3.sml";
+		String test = "test2.sml";
         
  
         Machine m = new Machine();

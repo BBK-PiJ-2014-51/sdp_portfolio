@@ -2,8 +2,8 @@ package sml;
 
 public class MulInstruction extends Instruction {
 
-	public MulInstruction(String label, int result, int op1, int op2) {
-        super(label, "mul", result, op1, op2);
+	public MulInstruction(String label, int result, int op1, int op2, String l2) {
+        super(label, "mul", result, op1, op2, l2);
 
     }
 

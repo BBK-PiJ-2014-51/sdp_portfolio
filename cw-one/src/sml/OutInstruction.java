@@ -3,8 +3,8 @@ package sml;
 public class OutInstruction extends Instruction {
 	
 
-	public OutInstruction(String label, int result, int op1, int op2) {
-        super(label, "out", result, op1, op2);
+	public OutInstruction(String label, int result, int op1, int op2, String l2) {
+        super(label, "out", result, op1, op2, l2);
 
     }
 

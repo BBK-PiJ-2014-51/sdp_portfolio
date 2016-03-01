@@ -21,9 +21,12 @@ public class Translator {
     private Labels labels; // The labels of the program being translated
     private ArrayList<Instruction> program; // The program to be created
     private String fileName; // source file of SML code
+    
+    private Class[] parameterTypes;
 
     public Translator(String fileName) {
         this.fileName = PATH + fileName;
+        parameterTypes = Instruction.getParameterTypes();
     }
 
     // translate the small program in the file into lab (the labels) and
@@ -79,27 +82,44 @@ public class Translator {
         if (line.equals(""))
             return null;
 
-        String ins = scan();
         
+        
+        String ins = scan();
+        int intParams = parameterTypes.length - 2;
+        int[] input = new int[intParams];
+        String l2 = null;
+        
+        for (int i = 0; i < intParams; i++){
+        	if(l2 == null){
+        		String scanIn = scan();
+        		try{
+        			Integer scanInt = Integer.parseInt(scanIn);
+        			input[i] = scanInt;
+        		}catch (NumberFormatException e) {
+                    l2 = scanIn;
+                }
+        	}
+        	
+        }
+        
+        if (l2 == null)
+        	l2 = scan();
+        
+        /*
         int maxParams = 3;
         int[] input = new int[maxParams];        
         for (int i = 0; i < maxParams; i++){
         	input[i] = scanInt();
         }
+        */
         
         try {
 			Class<? extends Instruction> insCls = (Class<? extends Instruction>) Class.forName("sml." + Character.toUpperCase(ins.charAt(0)) + ins.substring(1)
 					+ "Instruction");
 			
-			Class[] parameterTypes = new Class[4];
-			parameterTypes[0] = String.class;
-			parameterTypes[1] = int.class;
-			parameterTypes[2] = int.class;
-			parameterTypes[3] = int.class;
-
 			Constructor<? extends Instruction> ctor = insCls.getDeclaredConstructor(parameterTypes);
 			
-			return insCls.cast(ctor.newInstance(label, input[0], input[1], input[2]));
+			return insCls.cast(ctor.newInstance(label, input[0], input[1], input[2], l2));
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
