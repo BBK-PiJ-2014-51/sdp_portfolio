@@ -8,15 +8,10 @@ public class BnzInstruction extends Instruction {
 
 	@Override
 	public void execute(Machine m) {
-		if(result != 0){
+		if(m.getRegisters().getRegister(result) != 0){
 			Labels inSet = m.getLabels();
-			System.out.println(inSet);
-			System.out.println(l2);
-			System.out.println(inSet.indexOf(l2));
 			m.setPc(inSet.indexOf(l2));
 			Instruction ins = m.getProg().get(m.getPc());
-			ins.execute(m);
-			System.out.println(m.getPc());
 		}
 	}
 	
