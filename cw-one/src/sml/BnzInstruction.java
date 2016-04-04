@@ -11,7 +11,6 @@ public class BnzInstruction extends Instruction {
 		if(m.getRegisters().getRegister(result) != 0){
 			Labels inSet = m.getLabels();
 			m.setPc(inSet.indexOf(l2));
-			Instruction ins = m.getProg().get(m.getPc());
 		}
 	}
 	
