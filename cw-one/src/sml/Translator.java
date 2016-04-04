@@ -82,8 +82,7 @@ public class Translator {
         if (line.equals(""))
             return null;
 
-        
-        
+                
         String ins = scan();
         int intParams = parameterTypes.length - 2;
         int[] input = new int[intParams];
@@ -105,14 +104,6 @@ public class Translator {
         if (l2 == null)
         	l2 = scan();
         
-        /*
-        int maxParams = 3;
-        int[] input = new int[maxParams];        
-        for (int i = 0; i < maxParams; i++){
-        	input[i] = scanInt();
-        }
-        */
-        
         try {
 			Class<? extends Instruction> insCls = (Class<? extends Instruction>) Class.forName("sml." + Character.toUpperCase(ins.charAt(0)) + ins.substring(1)
 					+ "Instruction");
@@ -121,43 +112,13 @@ public class Translator {
 			
 			return insCls.cast(ctor.newInstance(label, input[0], input[1], input[2], l2));
 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
+		} catch (NoSuchMethodException | SecurityException | ClassNotFoundException | InstantiationException 
+				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			System.out.println("Could not get instruction!"  + e.getClass().toString() 
+					+ ":" + e.getMessage() + ". " + e.getCause());
 			e.printStackTrace();
 		}
         
-//        
-//        switch (ins) {
-//            case "add":
-//                r = scanInt();
-//                s1 = scanInt();
-//                s2 = scanInt();
-//                return new AddInstruction(label, r, s1, s2);
-//            case "lin":
-//                r = scanInt();
-//                s1 = scanInt();
-//                return new LinInstruction(label, r, s1, s2);
-//        }
-
-
         return null;
     }
 
