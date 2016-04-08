@@ -1,20 +1,19 @@
-package sml;
+package test;
+
+import sml.Machine;
+import sml.Translator;
 
 public class SmRunner {
 
 	public static void main(String[] args) {
         
-		String test = "test2.sml";
+		String scriptPath = "test/test2.sml";
         
  
         Machine m = new Machine();
-        Translator t = new Translator(test);
+        Translator t = new Translator(scriptPath);
         t.readAndTranslate(m.getLabels(), m.getProg());
-//
-//        Labels labels = m.getLabels();
-//        for (String label: labels){
-//        	
-//        }
+
         
         System.out.println("Here is the program; it has " + m.getProg().size() + " instructions.");
         System.out.println(m);
@@ -27,5 +26,7 @@ public class SmRunner {
         System.out.println(m.getRegisters() + ".");
         
 	}
+	
+	
 
 }

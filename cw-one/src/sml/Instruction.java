@@ -17,7 +17,6 @@ public abstract class Instruction {
     
     private static Class[] parameterTypes = null;
     
-
     public Instruction(String l, String op, int reg, int op1, int op2, String l2) {
         this.label = l;
         this.opcode = op;
@@ -29,14 +28,12 @@ public abstract class Instruction {
     }
 
     // = the representation "label: opcode" of this Instruction
-
     @Override
     public String toString() {
         return label + ": " + opcode;
     }
 
     // Execute this instruction on machine m.
-
     public abstract void execute(Machine m);
 
 	public static Class[] getParameterTypes() {
