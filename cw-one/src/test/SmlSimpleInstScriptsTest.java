@@ -67,16 +67,4 @@ public class SmlSimpleInstScriptsTest {
 		assertEquals(result, 39);
 	}
 
-    @Test
-	public void testBnzResult(){
-		Machine m = scriptRunner.testSmlScript("test/basicBnz.sml");
-		assertEquals(m.getRegisters().getRegister(1), 10000);
-	}
-
-    @Test
-	public void testBnzCounter(){
-		Machine m = scriptRunner.testSmlScript("test/basicBnz.sml");
-		assertEquals(m.getRegisters().getRegister(3), 0);
-	}
-
 }
