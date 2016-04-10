@@ -1,0 +1,26 @@
+0.30000000000000004[Error] expected:
+3.3
+30.0[Error] expected:
+530
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+List(10.0)[Error] expected:
+List(10.0, 20.0)
+List(1.0)[Error] expected:
+List(1.0, 2.0, 3.0)
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
+3.3000000000000003[Error] expected:
+3.3
